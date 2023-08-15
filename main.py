@@ -13,7 +13,7 @@ async def on_ready():
     print(f'Logged in as {bot.user.name}')
 
 @bot.event
-async def on_message(message):
+async def on_message(message, member: discord.Member):
     if message.author.bot:
         return
 
@@ -31,7 +31,7 @@ async def on_message(message):
         if warning_count >= 4:
             await message.delete()
             await message.author.send("You have been timed-out for 1 hour due to multiple warnings.")
-            # I was too lazy to implement the timeout. 
+            await member.timeout(duration='3600', reason=f"Severe Profanity") 
             
     await bot.process_commands(message)
 
@@ -51,7 +51,7 @@ async def ticket(ctx):
 
 @bot.command()
 async def help(ctx):
-    # Implement help command
+    # Im too lazy to implement this shit
     pass
 
 @bot.event
