@@ -17,7 +17,7 @@ async def on_message(message, member: discord.Member):
     if message.author.bot:
         return
 
-    if any(word in message.content.lower() for word in ['profanity_word_1', 'profanity_word_2']):
+    if any(word in message.content.lower() for word in ['n***a', 'p***']):
         user_id = str(message.author.id)
         warnings[user_id] = warnings.get(user_id, 0) + 1
         warning_count = warnings[user_id]
